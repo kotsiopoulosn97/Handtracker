@@ -4,7 +4,7 @@ mp_drawing = mp.solutions.drawing_utils
 mp_drawing_styles = mp.solutions.drawing_styles
 mp_hands = mp.solutions.hands
 
-# For webcam input:
+#  webcam input:
 cap = cv2.VideoCapture(0)
 with mp_hands.Hands(
     model_complexity=0,
@@ -14,11 +14,9 @@ with mp_hands.Hands(
     success, image = cap.read()
     if not success:
       print("Ignoring empty camera frame.")
-      # If loading a video, use 'break' instead of 'continue'.
       continue
 
-    # To improve performance, optionally mark the image as not writeable to
-    # pass by reference.
+
     image.flags.writeable = False
     image = cv2.cvtColor(image, cv2.COLOR_BGR2RGB)
     results = hands.process(image)
@@ -40,4 +38,4 @@ with mp_hands.Hands(
       break
 cap.release()
 
-# See PyCharm help at https://www.jetbrains.com/help/pycharm/
+
